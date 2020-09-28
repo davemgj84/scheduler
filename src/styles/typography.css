@@ -1,0 +1,20 @@
+.text--light {
+  font-weight: 300;
+}
+
+.text--regular {
+  font-weight: 400;
+}
+
+.text--semi-bold {
+  font-weight: 600;
+}
+
+.text--bold {
+  font-weight: 700;
+}
+
+.text--black {
+  font-weight: 900;
+}
+/*# sourceMappingURL=typography.css.map */
