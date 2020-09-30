@@ -158,8 +158,12 @@ storiesOf("Appointment", module)
     onCancel={action("onCancel")}
   />
   )
-  .add("Status", () => <Status
+  .add("Deleting", () => <Status
     message={"Deleting"}
+  />
+  )
+  .add("Saving", () => <Status
+    message={"Saving"}
   />
   )
   .add("Error", () => <Error
@@ -167,17 +171,24 @@ storiesOf("Appointment", module)
     onClose={action("onClose")}
   />
   )
-  .add("Form Create", () => <Form
+  .add("Create", () => <Form
     interviewers={interviewers}
     onSave={action("onSave")}
     onCancel={action("onCancel")}
   />
   )
-  .add("Form Edit", () => <Form
+  .add("Edit", () => <Form
     name={"David Jardine"}
     interviewers={interviewers}
     interviewer={interviewer.id}
     onSave={action("onSave")}
     onCancel={action("onCancel")}
   />
-  );
+  )
+  .add("Appointment Empty", () => (
+    <Fragment>
+      <Appointment id={1} time="12pm" />
+      <Appointment id="last" time="1pm" />
+    </Fragment>
+  ));
+
