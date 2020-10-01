@@ -14,7 +14,7 @@ const InterviewerList = (props) => {
       setInterviewer={() => props.onChange(interviewer.id)}
     />
     )
-  )
+  );
 
   return (
     <section className="interviewers">

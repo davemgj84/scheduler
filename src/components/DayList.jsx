@@ -1,5 +1,4 @@
 import React from "react";
-
 import DaylistItem from "components/DayListItem";
 
 const DayList = (props) => {
@@ -14,7 +13,7 @@ const DayList = (props) => {
         setDay={props.setDay}
       />
     )
-  )
+  );
 
   return (
     <ul>
