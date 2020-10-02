@@ -68,6 +68,7 @@ const Application = (props) => {
 
   };
 
+
   const schedule = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
 

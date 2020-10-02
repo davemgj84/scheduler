@@ -16,6 +16,7 @@ const Appointment = (props) => {
   const SAVING = "SAVING";
   const DELETE = "DELETE";
   const CONFIRM = "CONFIRM";
+  const EDIT = "EDIT";
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
@@ -41,22 +42,56 @@ const Appointment = (props) => {
       });
   };
 
+
   return (
+    
     <article className="appointment">
+
       <Header time={props.time} />
-      {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === SHOW && (
+
+      {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />};
+
+      {mode === SHOW &&
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onDelete={() => transition(CONFIRM)}
+          onEdit={() => transition(EDIT)}
         />
-      )}
-      {mode === CREATE && <Form onSave={save} interviewers={props.interviewers} onCancel={() => back()} />}
+      };
+
+      {mode === CREATE &&
+        <Form
+          onSave={save}
+          interviewers={props.interviewers}
+          onCancel={() => back()}
+        />
+      };
+
       {mode === SAVING && <Status message={"Saving"} />}
-      {mode === CONFIRM && <Confirm onCancel={() => back()} onConfirm={deleteAppointment} message={"Are you sure you would like to Delete?"} />}
-      {mode === DELETE && <Status message={"Deleting"} />}
+
+      {mode === CONFIRM &&
+        <Confirm
+          onCancel={() => back()}
+          onConfirm={deleteAppointment}
+          message={"Are you sure you would like to Delete?"}
+        />
+      };
+
+      {mode === DELETE && <Status message={"Deleting"} />};
+
+      {mode === EDIT &&
+        <Form
+          interviewers={props.interviewers}
+          onSave={save}
+          onCancel={() => back()}
+          name={props.interview.student}
+          interviewer={props.interview.interviewer.id}
+        />
+      };
+
     </article>
+
   );
 };
 
