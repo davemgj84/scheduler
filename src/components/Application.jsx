@@ -50,6 +50,24 @@ const Application = (props) => {
       });
   };
 
+  const cancelInterview = (id) => {
+
+    const appointment = {
+      ...state.appointments[id]
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    return axios.delete(`/api/appointments/${id}`)
+      .then(() => {
+        return setState({ ...state, appointments })
+      });
+
+  };
+
   const schedule = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
 
@@ -61,6 +79,7 @@ const Application = (props) => {
         interview={interview}
         interviewers={dailyInterviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
