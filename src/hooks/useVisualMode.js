@@ -2,11 +2,9 @@ import { useState } from "react";
 
 const useVisualMode = (initialMode) => {
 
-  const [mode, setMode] = useState(initialMode);
   const [history, setHistory] = useState([initialMode]);
 
   const transition = function(mode, replace = false) {
-    setMode(mode);
     if (replace) {
       setHistory(prev => [...prev.slice(0, -1), mode]);
     } else {
@@ -23,7 +21,7 @@ const useVisualMode = (initialMode) => {
     });
   };
 
-  return { mode: history[history.length -1], back, transition }
+  return { mode: history[history.length - 1], back, transition }
 
 };
 
