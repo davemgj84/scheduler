@@ -4,70 +4,19 @@ import Appointment from "components/Appointment/index";
 import "components/Application.scss";
 import axios from "axios"
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
+import useApplicationData from "../hooks/useApplicationData";
 
 const Application = (props) => {
-
-  const setDay = day => setState({ ...state, day });
-  const [state, setState] = useState({
-    day: "Monday",
-    days: [],
-    appointments: {},
-    interviewers: {}
-  });
-
-  useEffect(() => {
-    Promise.all([
-      axios.get('/api/days'),
-      axios.get('/api/appointments'),
-      axios.get('/api/interviewers')
-    ])
-      .then((all) => {
-        const days = all[0].data
-        const appointments = all[1].data
-        const interviewers = all[2].data
-        setState(prev => ({ ...prev, days, appointments, interviewers }));
-      });
-  }, []);
+  
+  const {
+    state,
+    setDay,
+    bookInterview,
+    cancelInterview
+  } = useApplicationData()
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const dailyInterviewers = getInterviewersForDay(state, state.day);
-
-  const bookInterview = (id, interview) => {
-
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
-    };
-
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
-
-    return axios.put(`/api/appointments/${id}`, appointment)
-      .then(() => {
-        return setState({ ...state, appointments })
-      });
-  };
-
-  const cancelInterview = (id) => {
-
-    const appointment = {
-      ...state.appointments[id]
-    };
-
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
-
-    return axios.delete(`/api/appointments/${id}`)
-      .then(() => {
-        return setState({ ...state, appointments })
-      });
-
-  };
-
 
   const schedule = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
@@ -109,7 +58,7 @@ const Application = (props) => {
       </section>
       <section className="schedule">
         {schedule}
-        <Appointment key="last" time="4:20pm" />
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
