@@ -28,6 +28,8 @@ const useApplicationData = () => {
 
   const bookInterview = (id, interview) => {
 
+    const foundDay = state.days.find((day) => day.appointments.includes(id));
+
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -38,34 +40,27 @@ const useApplicationData = () => {
       [id]: appointment
     };
 
+    const days = state.days.map((day) => {
+      if (day.name === foundDay.name && state.appointments[id].interview === null) {
+        return { ...day, spots: day.spots - 1 };
+      } else {
+        return day;
+      };
+    });
+
     return axios.put(`/api/appointments/${id}`, appointment)
       .then(() => {
-        let days;
-        if (state.appointments[id].interview === null) {
-          if (id >= 1 && id <= 5) {
-            days = state.days.map(element => element.id === 1 ? { ...element, spots: element.spots - 1 } : element);
-          } else if (id >= 6 && id <= 10) {
-            days = state.days.map(element => element.id === 2 ? { ...element, spots: element.spots - 1 } : element);
-          } else if (id >= 11 && id <= 15) {
-            days = state.days.map(element => element.id === 3 ? { ...element, spots: element.spots - 1 } : element);
-          } else if (id >= 16 && id <= 20) {
-            days = state.days.map(element => element.id === 4 ? { ...element, spots: element.spots - 1 } : element);
-          } else if (id >= 21 && id <= 25) {
-            days = state.days.map(element => element.id === 5 ? { ...element, spots: element.spots - 1 } : element);
-          };
-        };
-        if (days) {
-          return setState({ ...state, appointments, days });
-        } else {
-          return setState({ ...state, appointments });
-        };
+        return setState({ ...state, appointments, days })
       });
   };
 
   const cancelInterview = (id) => {
 
+    const foundDay = state.days.find((day) => day.appointments.includes(id));
+
     const appointment = {
-      ...state.appointments[id]
+      ...state.appointments[id],
+      interview: null
     };
 
     const appointments = {
@@ -73,21 +68,16 @@ const useApplicationData = () => {
       [id]: appointment
     };
 
+    const days = state.days.map((day, index) => {
+      if (day.name === foundDay.name) {
+        return { ...day, spots: day.spots + 1 };
+      } else {
+        return day;
+      };
+    });
 
-    return axios.delete(`/api/appointments/${id}`, appointment)
+    return axios.delete(`/api/appointments/${id}`)
       .then(() => {
-        let days;
-        if (id >= 1 && id <= 5) {
-          days = state.days.map(element => element.id === 1 ? { ...element, spots: element.spots + 1 } : element);
-        } else if (id >= 6 && id <= 10) {
-          days = state.days.map(element => element.id === 2 ? { ...element, spots: element.spots + 1 } : element);
-        } else if (id >= 11 && id <= 15) {
-          days = state.days.map(element => element.id === 3 ? { ...element, spots: element.spots + 1 } : element);
-        } else if (id >= 16 && id <= 20) {
-          days = state.days.map(element => element.id === 4 ? { ...element, spots: element.spots + 1 } : element);
-        } else if (id >= 21 && id <= 25) {
-          days = state.days.map(element => element.id === 5 ? { ...element, spots: element.spots + 1 } : element);
-        };
         return setState({ ...state, appointments, days });
       });
   };
