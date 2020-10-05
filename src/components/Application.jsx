@@ -6,7 +6,7 @@ import "components/Application.scss";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 import useApplicationData from "../hooks/useApplicationData";
 
-const Application = (props) => {
+const Application = () => {
   
   const {
     state,
