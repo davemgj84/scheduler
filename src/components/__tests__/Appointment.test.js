@@ -6,12 +6,11 @@ import { action } from "@storybook/addon-actions/dist/preview";
 afterEach(cleanup);
 
 describe("Appointment component", () => {
-
   const mockInterviewers = ["bob", "mary"];
 
   const mockInterview = {
     student: "David",
-    interviewer: 2
+    interviewer: 2,
   };
 
   const mockAppointment = {
@@ -19,8 +18,8 @@ describe("Appointment component", () => {
     time: "4pm",
     interview: {
       student: "David",
-      interviewer: 2
-    }
+      interviewer: 2,
+    },
   };
 
   it("renders without crashing", () => {
@@ -36,5 +35,4 @@ describe("Appointment component", () => {
       />
     );
   });
-
 });
