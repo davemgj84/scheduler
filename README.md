@@ -26,5 +26,5 @@ npm run storybook
 
 ## Final Product - Screenshots
 
-!["Scheduler"](https://github.com/davemgj84/scheduler/blob/master/public/docs/Scheduler-Monday.png?raw=true)
-!["Create new appointment"](https://github.com/davemgj84/scheduler/blob/master/public/docs/Create-Appointment.png?raw=true)
+!["Scheduler"](https://github.com/davemgj84/scheduler/blob/master/docs/Scheduler-Monday.png?raw=true)
+!["Create new appointment"](https://github.com/davemgj84/scheduler/blob/master/docs/Create-Appointment.png?raw=true)
