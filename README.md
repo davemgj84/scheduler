@@ -1,5 +1,7 @@
 # Interview Scheduler
 
+Scheduler is single-page app that allows students to book appointments with interviewers(mentors, teachers, etc) in different time slots between Monday and Friday. They can easily create, edit, and delete appointments to suit their scheduling needs.
+
 ## Setup
 
 Install dependencies with `npm install`.
@@ -21,3 +23,8 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Final Product - Screenshots
+
+!["Scheduler"]()
+!["Create new appointment"]()
