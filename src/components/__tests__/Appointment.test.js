@@ -5,6 +5,8 @@ import { action } from "@storybook/addon-actions/dist/preview";
 
 afterEach(cleanup);
 
+// TESTS FOR APPOINTMENT COMPONENT:
+
 describe("Appointment component", () => {
   const mockInterviewers = ["bob", "mary"];
 

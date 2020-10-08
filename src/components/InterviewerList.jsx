@@ -3,11 +3,14 @@ import InterviewerListItem from "./InterviewerListItem";
 import "components/InterviewerList.scss";
 import PropTypes from "prop-types";
 
+// InterviewList COMPONENT:
+
 const InterviewerList = (props) => {
   InterviewerList.propTypes = {
     interviewers: PropTypes.array.isRequired,
   };
 
+  // MAPS THROUGH INTERVEWERS AND CREATES INDIVIDUAL COMPONENTS FOR EACH
   const itemList = props.interviewers.map((interviewer) => (
     <InterviewerListItem
       key={interviewer.id}

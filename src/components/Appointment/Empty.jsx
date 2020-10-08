@@ -1,5 +1,7 @@
 import React from "react";
 
+// CONFIRM EMPTY:
+
 const Empty = (props) => {
   return (
     <main className="appointment__add">

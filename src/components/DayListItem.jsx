@@ -2,7 +2,10 @@ import React from "react";
 import classnames from "classnames";
 import "components/DayListItem.scss";
 
+// DayListItem COMPONENT:
+
 const DayListItem = (props) => {
+  // FORMAT SPOTS INTO READABLE SENTENCE
   const formatSpots = (spots) => {
     return spots === 0
       ? "no spots remaining"
@@ -11,6 +14,7 @@ const DayListItem = (props) => {
       : `${spots} spots remaining`;
   };
 
+  // STYLING DEPENDING ON SELECTED OR FULL
   const dayClass = classnames("day-list__item", {
     "day-list__item--selected": props.selected,
     "day-list__item--full": props.spots === 0,

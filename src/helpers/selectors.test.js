@@ -4,6 +4,9 @@ import {
   getInterviewersForDay,
 } from "helpers/selectors";
 
+// TESTS FOR HELPERS SELECTOR:
+
+// MOCK DATA FOR TESTS:
 const state = {
   days: [
     {

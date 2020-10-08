@@ -9,6 +9,8 @@ import {
   getInterviewersForDay,
 } from "helpers/selectors";
 
+// APPLICATION COMPONENT:
+
 const Application = () => {
   const {
     state,

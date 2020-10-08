@@ -13,12 +13,13 @@ import {
   getByPlaceholderText,
   queryByText,
   queryByAltText,
-  prettyDOM,
 } from "@testing-library/react";
 
 import Application from "components/Application";
 
 afterEach(cleanup);
+
+// TESTS FOR APPLICATION COMPONENT:
 
 describe("Application", () => {
   it("changes the schedule when a new day is selected", async () => {

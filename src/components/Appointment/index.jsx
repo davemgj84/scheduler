@@ -9,7 +9,10 @@ import Status from "components/Appointment/Status";
 import Confirm from "components/Appointment/Confirm";
 import Error from "components/Appointment/Error";
 
+// APPOINTMENT COMPONENT:
+
 const Appointment = (props) => {
+  // MODE VARIABLES
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -24,6 +27,7 @@ const Appointment = (props) => {
     props.interview ? SHOW : EMPTY
   );
 
+  // SAVE APPOINTMENT:
   const save = (name, interviewer) => {
     const interview = {
       student: name,
@@ -40,6 +44,7 @@ const Appointment = (props) => {
       });
   };
 
+  // DELETE APPOINTMENT:
   const deleteAppointment = () => {
     transition(DELETE, true);
     props

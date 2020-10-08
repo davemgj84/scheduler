@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// HOOK FOR TRANSITIONING BETWEEN MODES:
 const useVisualMode = (initialMode) => {
   const [history, setHistory] = useState([initialMode]);
 

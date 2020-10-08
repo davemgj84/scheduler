@@ -1,3 +1,5 @@
+// Mock data for axios requests:
+
 const fixtures = {
   days: [
     {
@@ -52,6 +54,8 @@ const fixtures = {
     },
   },
 };
+
+// Mock Axios requests - GET, PUT, DELETE:
 
 export default {
   get: jest.fn((url) => {
